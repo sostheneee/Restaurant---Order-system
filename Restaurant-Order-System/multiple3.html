@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Modal Box</title>
+    <style>
+        .vertical {
+            border-left: 5px solid black;
+            height: 200px;
+        }
+    </style>
+<title>xxxx</title>
+</head>
+<body>
+<center>
+<h1>Restaurant order system</h1>
+<div class="form-label-groups">
+    <label>Customer Name:<input type ="text" name ="fullname" placeholder="Customer Name"></label><br>
+<br>
+    <select name="name" id="list1" onchange="showDiv('div',this);" class="form-control">
+    <option value="">meal type</option>
+    <option value="2">breakfast</option>
+    <option value="1">Lunch</option>
+    <option value="0">Dinner</option>
+    <option value="3">Dinner</option>
+</select>
+<span id="result"></span>
+<br>
+<br>
+<input type="button" id="but1" value="click" onclick="listboxresult();"/>
+<br>
+<br>
+</div>
+<div id="div2" >
+<select id="list2">
+ <option value="item0">--select--</option>
+ <option value="breakfast:with snack->Ugx1000">breakfast:with snake->Ugx1000</option>
+ <option value="breakfast:without snack->Ugx500">breakfast:without snack->Ugx500</option>
+</select>
+</div>
+<br>
+<div id="div3" style="display:none;">
+<select id="list3">
+ <option value="item0">--select2--</option>
+ <option value="item1">Lunch:goat stew->Ugx6000</option>
+ <option value="item2">Lunch:Beef->Ugx4000</option>
+ <option value="item3">Lunch:Chicken->Ugx8000</option>
+<option value="item4">Lunch:Beans->Ugx2000</option>
+</select>
+</div>
+<br>
+<div id="div4" style="display:none;">
+<select id="list4">
+ <option value="item0">--select3--</option>
+ <option value="item1">Dinner:Simple->Ugx20000</option>
+ <option value="item2">Dinner:Buffet->Ugx40000</option>
+</select>
+<span id="result"></span>
+<br>
+<input type="button" id="but1" value="click" onclick="listboxresult();"/>
+</center>
+</div>
+<hr/>
+<center>
+<div class="modal" id="modal">
+    <div class='modal__container'>
+        <img class="modal__img">
+        <div class="modal__content">
+            <h1 class="modal__title">TRINITY RESTAURANT <br><span>FOR COMMUNITY SERVICE</span></h1>
+          
+                    <p id="demo">Click the button</p>
+                    <button onclick="myFunction()">CONFIRM ORDER</button>
+        </div>
+        <i id="close" class="fas fa-times"></i>
+    </div>
+</div>
+<!--
+<div class= "vertical"></div>
+-->
+</center>
+<hr/>
+<script>
+function showDiv(prefix,chooser)
+{
+   var selectedOption = (chooser.options[chooser.selectedIndex].value);
+     if(selectedOption == "2")
+      {
+         var div = document.getElementById(prefix+"2");
+        div.style.display ='block';
+    
+      }
+      else if(selectedOption == "1") {
+        var div = document.getElementById(prefix+"3");
+        div.style.display ='block';
+      } 
+      else if(selectedOption == "0") {
+        var div = document.getElementById(prefix+"4");
+        div.style.display ='block';
+      }
+      else
+      {
+        var div = document.getElementById(prefix+"2");
+       div.style.display ='none';
+       } 
+
+}
+     function listboxresult()
+      {
+         var spanresult=document.getElementById("result");
+         spanresult.value="";
+         var x=document.getElementById("list2");
+         for(var i=0; i<x.options.length;i++)
+         {
+            if(x.options[i].selected ===true)
+            {
+               spanresult.value +=x.options[i].value + " ";
+               document.getElementById("result").innerHTML=spanresult.value;
+               document.getElementById("result").style.color="green";
+            }
+         }
+          if(document.getElementById("result").value == "")
+          {
+              document.getElementById("result").innerHTML=" Please select atleast one list item....!";
+              document.getElementById("result").style.color="green";
+              //document.getElementById("result").style.shape = "rectangle";
+           }
+      }
+
+    function myFunction() {
+        var h = document.createElement("p");
+        var t = document.createTextNode("HELLO SOST, YOUR ORDER WORTH [ORDER PRICE] HAS BEEN RECEIVED");
+        h.appendChild(t);
+        document.body.appendChild(h);
+    }
+
+</script>
+
+</center>
+</body>
+</html>
+
